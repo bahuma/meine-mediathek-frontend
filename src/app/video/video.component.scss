@@ -1,0 +1,17 @@
+.mat-card-title {
+  font-size: 120%;
+}
+
+.app-card {
+  cursor: pointer;
+
+  &.is-watched {
+    opacity: .5;
+  }
+}
+
+
+.app-button-spinner {
+  display: inline-block;
+  margin-right: 5px;
+}

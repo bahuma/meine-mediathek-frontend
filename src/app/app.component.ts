@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {AuthService} from '@auth0/auth0-angular';
+import {HttpClient} from '@angular/common/http';
+import {FeedService} from './service/feed.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'meine-mediathek';
+
+  constructor(public auth: AuthService, public router: Router) {
+  }
+
+  login() {
+    this.auth.loginWithRedirect();
+  }
+
+  logout() {
+    this.auth.logout({ returnTo: document.location.origin })
+  }
 }

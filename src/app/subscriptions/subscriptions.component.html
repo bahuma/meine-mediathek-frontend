@@ -1,0 +1,36 @@
+<h1>Abos</h1>
+
+<mat-card>
+  <p *ngIf="subscriptions.length == 0">
+    <em>Du hast noch keine Sendungen abonniert.</em>
+  </p>
+  <mat-list role="list" *ngIf="subscriptions.length > 0">
+    <ng-container *ngFor="let subscription of subscriptions; let index = index">
+      <mat-list-item role="listitem">
+        <h3 matLine><strong>{{subscription.topic}}</strong></h3>
+        <p matLine *ngIf="subscription.channel || subscription.duration">
+          {{subscription.channel}}<span *ngIf="subscription.channel && subscription.duration">, </span><span
+          *ngIf="subscription.duration">Länger als {{subscription.duration}} Minuten</span>
+        </p>
+
+        <span style="flex: 1;"></span>
+
+        <button mat-icon-button [routerLink]="'/abos/edit/' + subscription.id">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="delete(subscription, index)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-divider *ngIf="index !== subscriptions.length - 1"></mat-divider>
+    </ng-container>
+  </mat-list>
+</mat-card>
+
+<button mat-fab
+        color="accent"
+        aria-label="Abo hinzufügen"
+        style="position: fixed; bottom: 18px; right: 18px;"
+        [routerLink]="'/abos/add'">
+  <mat-icon>add</mat-icon>
+</button>

@@ -3,7 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  backendUrl: "http://localhost:3002",
+  authConfig: {
+    domain: 'bhm-mediathek.eu.auth0.com',
+    clientId: 'zkhpJuy7IN9ipGDvNiufZydf8MRoYCun',
+    audience: 'http://localhost:3002/',
+    httpInterceptor: {
+      allowedList: [
+        'http://localhost:3002/*',
+      ]
+    }
+  }
 };
 
 /*

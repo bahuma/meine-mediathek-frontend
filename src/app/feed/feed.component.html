@@ -1,0 +1,41 @@
+<h1 style=" display: flex; justify-content: space-between;">
+  <span>Neue Videos</span>
+  <button mat-button [routerLink]="'/abos'" style="padding-right: 0;">
+    <mat-icon>settings</mat-icon>
+    Abos verwalten
+  </button>
+</h1>
+
+<div *ngIf="loading" class="app-loader">
+  <h2>Die neuesten Videos werden geladen...</h2>
+  <div class="app-spinner-wrapper">
+    <mat-spinner diameter="35"></mat-spinner>
+  </div>
+</div>
+
+<div class="list" #videoList>
+  <div class="item" *ngFor="let video of videos">
+    <app-video [video]="video"></app-video>
+  </div>
+</div>
+
+<div *ngIf="videos.length > 0 && !noMoreVideosAvailable" style="text-align: center">
+  <button mat-flat-button
+          (click)="loadMore()"
+          color="accent"
+          [disabled]="loadingMore">
+    <span *ngIf="loadingMore">
+      <mat-spinner diameter="16" style="display: inline-block; position: relative; top: 2px;"></mat-spinner>
+      Wird geladen...
+    </span>
+    <span *ngIf="!loadingMore">
+      Mehr laden
+    </span>
+
+  </button>
+</div>
+
+
+<div *ngIf="videos.length == 0 && !loading" style="margin-bottom: 2em;">
+  <em>Du hast keine ungesehenen Videos.<br>Wie wäre es wenn du mehr Sendungen abonnierst?</em>
+</div>

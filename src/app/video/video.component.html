@@ -1,0 +1,20 @@
+<mat-card *ngIf="video" class="app-card" [ngClass]="{'is-watched': watched}" (click)="toggleExpanded()">
+  <mat-card-title>{{video.topic}}: {{video.title}}</mat-card-title>
+  <mat-card-subtitle>{{video.channel}} - {{video.timestamp | date:'EEEE, dd.MM.YYYY' }}</mat-card-subtitle>
+  <mat-card-content *ngIf="expanded">
+    <p>
+      {{video.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button *ngIf="!watched" (click)="openVideo($event, video.urlVideo)"><mat-icon>play_arrow</mat-icon> Play</button>
+    <button mat-button *ngIf="!watched" (click)="setWatched($event)">
+      <mat-spinner diameter="24" *ngIf="processing" class="app-button-spinner"></mat-spinner>
+      <mat-icon *ngIf="!processing">done</mat-icon> Als angesehen markieren
+    </button>
+    <button mat-button *ngIf="watched" (click)="unsetWatched($event)">
+      <mat-spinner diameter="24" *ngIf="processing" class="app-button-spinner"></mat-spinner>
+      <mat-icon *ngIf="!processing">undo</mat-icon> Rückgängig
+    </button>
+  </mat-card-actions>
+</mat-card>

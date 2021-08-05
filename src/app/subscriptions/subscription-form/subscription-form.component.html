@@ -1,0 +1,35 @@
+<h1>Abo <span *ngIf="mode === modes.edit">bearbeiten</span><span *ngIf="mode == modes.add">hinzufügen</span></h1>
+
+<form *ngIf="subscription">
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Sendung</mat-label>
+      <input matInput required [(ngModel)]="subscription.topic" name="topic">
+      <mat-hint>Der Titel der Sendung die Sie abonnieren möchten</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Sender</mat-label>
+      <input matInput [(ngModel)]="subscription.channel" name="channel">
+      <mat-hint>Nur Videos von diesem Sender abonnieren</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Minimale Länge</mat-label>
+      <input matInput type="number" min="0" [(ngModel)]="subscription.duration" name="duration">
+      <span matSuffix>Minuten</span>
+      <mat-hint>Nur Videos abonnieren die länger sind</mat-hint>
+    </mat-form-field>
+  </p>
+  <p class="button-wrapper">
+    <button mat-raised-button color="primary" [disabled]="!subscription.topic || subscription.topic == ''" (click)="save()">Speichern</button>
+  </p>
+</form>
+
+<app-subscription-preview
+  *ngIf="subscription"
+    [topic]="subscription.topic"
+    [channel]="subscription.channel"
+    [duration]="subscription.duration"></app-subscription-preview>
