@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "meine-mediathek:build:production"
+              "buildTarget": "meine-mediathek:build:production"
             },
             "development": {
-              "browserTarget": "meine-mediathek:build:development"
+              "buildTarget": "meine-mediathek:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "meine-mediathek:build"
+            "buildTarget": "meine-mediathek:build"
           }
         },
         "test": {

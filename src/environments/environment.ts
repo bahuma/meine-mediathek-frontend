@@ -2,19 +2,26 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import {AuthConfig} from "@auth0/auth0-angular";
+
+const authConfig: AuthConfig = {
+  domain: 'bhm-mediathek.eu.auth0.com',
+  clientId: 'zkhpJuy7IN9ipGDvNiufZydf8MRoYCun',
+  authorizationParams: {
+    audience: "http://localhost:3002/",
+    redirect_uri: "http://localhost:4200",
+  },
+  httpInterceptor: {
+    allowedList: [
+      'http://localhost:3002/*',
+    ]
+  }
+}
+
 export const environment = {
   production: false,
   backendUrl: "http://localhost:3002",
-  authConfig: {
-    domain: 'bhm-mediathek.eu.auth0.com',
-    clientId: 'zkhpJuy7IN9ipGDvNiufZydf8MRoYCun',
-    audience: 'http://localhost:3002/',
-    httpInterceptor: {
-      allowedList: [
-        'http://localhost:3002/*',
-      ]
-    }
-  }
+  authConfig: authConfig
 };
 
 /*
