@@ -2,21 +2,21 @@
 
 <form *ngIf="subscription">
   <p>
-    <mat-form-field appearance="standard">
+    <mat-form-field>
       <mat-label>Sendung</mat-label>
       <input matInput required [(ngModel)]="subscription.topic" name="topic">
       <mat-hint>Der Titel der Sendung die Sie abonnieren möchten</mat-hint>
     </mat-form-field>
   </p>
   <p>
-    <mat-form-field appearance="standard">
+    <mat-form-field>
       <mat-label>Sender</mat-label>
       <input matInput [(ngModel)]="subscription.channel" name="channel">
       <mat-hint>Nur Videos von diesem Sender abonnieren</mat-hint>
     </mat-form-field>
   </p>
   <p>
-    <mat-form-field appearance="standard">
+    <mat-form-field>
       <mat-label>Minimale Länge</mat-label>
       <input matInput type="number" min="0" [(ngModel)]="subscription.duration" name="duration">
       <span matSuffix>Minuten</span>

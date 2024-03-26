@@ -1,4 +1,4 @@
-<mat-card *ngIf="video" class="app-card" [ngClass]="{'is-watched': watched}" (click)="toggleExpanded()">
+<mat-card appearance="outlined" *ngIf="video" class="app-card" [ngClass]="{'is-watched': watched}" (click)="toggleExpanded()">
   <mat-card-title>{{video.topic}}: {{video.title}}</mat-card-title>
   <mat-card-subtitle>{{video.channel}} - {{video.timestamp | date:'EEEE, dd.MM.YYYY' }}</mat-card-subtitle>
   <mat-card-content *ngIf="expanded">
