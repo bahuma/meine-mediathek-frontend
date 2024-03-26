@@ -10,12 +10,13 @@
 
 <mat-list *ngIf="videos.length > 0">
   <mat-list-item *ngFor="let video of videos">
-    <h3 matLine style="font-weight: bold;">{{video.title}}</h3><br>
-    <p matLine>
+    <div matListItemTitle style="font-weight: bold;">{{video.title}}</div>
+    <div matListItemLine>
       {{video.topic}}, {{video.channel}}, {{video.timestamp | date:"dd.MM.YYY"}}
-    </p>
-    <span style="flex: 1; padding: 0 5px">&nbsp;</span>
-    {{video.duration * 1000 | date:'mm:ss'}}
+    </div>
+    <div matListItemLine>
+      {{video.duration * 1000 | date:'mm:ss'}}
+    </div>
   </mat-list-item>
 </mat-list>
 

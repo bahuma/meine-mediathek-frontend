@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {SubscriptionsService} from '../service/subscriptions.service';
 import {SubscriptionModel} from '../model/subscription.model';
 import {Subscription} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmDialogComponent, ConfirmDialogModel} from '../confirm-dialog/confirm-dialog.component';
+import {MatTable} from "@angular/material/table";
 
 @Component({
   selector: 'app-subscriptions',
@@ -15,6 +16,10 @@ export class SubscriptionsComponent implements OnInit, OnDestroy {
   public subscriptions: SubscriptionModel[] = [];
   private subscriptionsSubscription?: Subscription;
 
+  displayedColumns = ["topic", "channel", "duration", "actions"];
+
+  @ViewChild(MatTable) table!: MatTable<Subscription>;
+
   constructor(public subscriptionsService: SubscriptionsService, private snackbar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -23,6 +28,8 @@ export class SubscriptionsComponent implements OnInit, OnDestroy {
         this.subscriptions = subscriptions.sort((a, b) => {
           return a.topic.localeCompare(b.topic);
         });
+
+        this.table?.renderRows();
       });
   }
 
@@ -45,6 +52,7 @@ export class SubscriptionsComponent implements OnInit, OnDestroy {
         .subscribe(() => {
           this.subscriptions.splice(index, 1);
           this.snackbar.open('Das Abo wurde gelöscht.', '', {duration: 4000})
+          this.table?.renderRows();
         }, error => {
           console.error(error);
           this.snackbar.open('Das Abo konnte nicht gelöscht werden...', '', {duration: 4000})

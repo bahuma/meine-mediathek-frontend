@@ -8,7 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {AuthHttpInterceptor, AuthModule} from '@auth0/auth0-angular';
 import {MatButtonModule} from '@angular/material/button';
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FeedComponent } from './feed/feed.component';
 import { VideoComponent } from './video/video.component';
 import {MatCardModule} from '@angular/material/card';
@@ -28,6 +28,15 @@ import {FormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable
+} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -39,33 +48,44 @@ import {MatDialogModule} from '@angular/material/dialog';
     SubscriptionPreviewComponent,
     ConfirmDialogComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production,
-            // Register the ServiceWorker as soon as the app is stable
-            // or after 30 seconds (whichever comes first).
-            registrationStrategy: 'registerWhenStable:30000'
-        }),
-        AuthModule.forRoot(environment.authConfig),
-        FormsModule,
-        MatButtonModule,
-        HttpClientModule,
-        MatCardModule,
-        MatExpansionModule,
-        CdkAccordionModule,
-        MatListModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatProgressSpinnerModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatSnackBarModule,
-        MatDialogModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    AuthModule.forRoot(environment.authConfig),
+    FormsModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatCardModule,
+    MatExpansionModule,
+    CdkAccordionModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatTable,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatCell,
+    MatCellDef,
+    MatHeaderRow,
+    MatRow,
+    MatRowDef,
+    MatHeaderRowDef,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
   ],
