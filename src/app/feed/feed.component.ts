@@ -2,7 +2,7 @@ import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core
 import {FeedService} from '../service/feed.service';
 import {Video} from '../model/video.model';
 import {Subscription} from 'rxjs';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 
 @Component({
   selector: 'app-feed',

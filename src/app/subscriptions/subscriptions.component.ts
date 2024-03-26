@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SubscriptionsService} from '../service/subscriptions.service';
 import {SubscriptionModel} from '../model/subscription.model';
 import {Subscription} from 'rxjs';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {ConfirmDialogComponent, ConfirmDialogModel} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
